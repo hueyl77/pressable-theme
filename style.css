@@ -345,6 +345,11 @@ input[type="search"]::-webkit-search-results-button {
     float: left;
 }
 
+.entry-content a {
+    font-weight: 700;
+    border-bottom: 1px dotted #444;
+}
+
 /* ==========================================================================
    Header Styles
    ========================================================================== */
