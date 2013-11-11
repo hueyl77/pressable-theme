@@ -340,6 +340,82 @@ class Pressable_Admin {
     	        </tr>
     	    </tbody>
     	</table>
+
+    	<hr>
+
+    	<h4>Pricing High Touch Settings</h4>
+    	<p>Each section is for a pricing column. You can add/delete columns with the buttons. These columns can also be sorted as you see fit.</p>
+    	<table class="form-table">
+    	    <tbody>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-pricing-high-title">Pricing High Touch Title</label></th>
+    	            <td><input id="pressable-high-title" type="text" name="pressable[pricing_high_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_pricing_high_title', true ); ?>" size="70" placeholder="Enter the pricing high touch title here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-pricing-high-supports">Pricing High Touch Supporting Text</label></th>
+    	            <td><input id="pressable-high-supports" type="text" name="pressable[pricing_high_supports]" value="<?php echo get_post_meta( $post->ID, 'pressable_pricing_high_supports', true ); ?>" size="70" placeholder="Enter the pricing high touch supporting text here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label>Pricing Columns</label></th>
+    	            <td>
+        	            <ul class="tgm-repeatable-fields" style="margin:0;">
+						    <?php $pricing_high = get_post_meta( $post->ID, 'pressable_pricing_high', true ); if ( empty( $pricing_high ) ) : ?>
+						        <li class="tgm-repeating-field" data-number="0" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+    						            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+						            <p>
+						                <label><strong>Pricing Column Title</strong></label> <input type="text" name="_pressable_high[0][title]" value="" size="45" placeholder="Enter the pricing column title here." />
+						            </p>
+						            <p>
+						                <label><strong>Pricing Column Price</strong></label> <input type="text" name="_pressable_high[0][price]" value="" size="45" placeholder="Enter the pricing column price here." />
+						            </p>
+						            <p><strong>Pricing Row Items</strong></p>
+						            <ul class="tgm-repeatable-fields">
+						                <li class="tgm-repeating-field" data-number="0" data-column="false" style="margin-bottom:5px;cursor:move;">
+						                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/sortable.gif" style="vertical-align: middle; cursor: move;" />
+						                    <input type="text" name="_pressable_high[0][rows][]" value="" size="35" placeholder="Enter the pricing row item here." /> <a class="tgm-repeat-field button button-primary" title="Repeat Field">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field">Remove Field</a>
+						                </li>
+						            </ul>
+						            <p>
+						                <label><strong>Pricing Column Button Text</strong></label> <input type="text" name="_pressable_high[0][button]" value="" size="45" placeholder="Enter the pricing column button text here." />
+						            </p>
+						            <p>
+						                <label><strong>Pricing Column Button Link</strong></label> <input type="text" name="_pressable_high[0][button_link]" value="" size="45" placeholder="Enter the pricing column button link here." />
+						            </p>
+						        </li>
+						    <?php else : ?>
+						    <?php foreach ( (array) $pricing_high as $i => $field ) : ?>
+						        <li class="tgm-repeating-field" data-number="<?php echo $i; ?>" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+
+						            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+						            <p>
+						                <label><strong>Pricing Column Title</strong></label> <input type="text" name="_pressable_high[<?php echo $i; ?>][title]" value="<?php echo $field['title']; ?>" size="45" placeholder="Enter the pricing column title here." />
+						            </p>
+						            <p>
+						                <label><strong>Pricing Column Price</strong></label> <input type="text" name="_pressable_high[<?php echo $i; ?>][price]" value="<?php echo $field['price']; ?>" size="45" placeholder="Enter the pricing column price here." />
+						            </p>
+						            <p><strong>Pricing Row Items</strong></p>
+                                    <ul class="tgm-repeatable-fields">
+                                        <?php foreach ( (array) $field['rows'] as $n => $row ) : ?>
+						                <li class="tgm-repeating-field" data-number="<?php echo $n; ?>" data-column="false" style="margin-bottom:5px;cursor:move;">
+						                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/sortable.gif" style="vertical-align: middle; cursor: move;" />
+						                    <input type="text" name="_pressable_high[<?php echo $i; ?>][rows][]" value="<?php echo esc_attr( $row ); ?>" size="35" placeholder="Enter the pricing row item here." /> <a class="tgm-repeat-field button button-primary" title="Repeat Field">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field">Remove Field</a>
+						                </li>
+						                <?php endforeach; ?>
+						            </ul>
+						            <p>
+						                <label><strong>Pricing Column Button Text</strong></label> <input type="text" name="_pressable_high[<?php echo $i; ?>][button]" value="<?php echo $field['button']; ?>" size="45" placeholder="Enter the pricing column button text here." />
+						            </p>
+						            <p>
+						                <label><strong>Pricing Column Button Link</strong></label> <input type="text" name="_pressable_high[<?php echo $i; ?>][button_link]" value="<?php echo $field['button_link']; ?>" size="45" placeholder="Enter the pricing column button link here." />
+						            </p>
+						        </li>
+							<?php endforeach; ?>
+							<?php endif; ?>
+					    </ul>
+    	            </td>
+    	        </tr>
+    	    </tbody>
+    	</table>
     	<?php
 
 	}
@@ -411,6 +487,7 @@ class Pressable_Admin {
 
         update_post_meta( $post_id, 'pressable_pricing_columns', $_POST['_pressable_pricing'] );
         update_post_meta( $post_id, 'pressable_pricing_faq', $_POST['_pressable_faq'] );
+        update_post_meta( $post_id, 'pressable_pricing_high', $_POST['_pressable_high'] );
 
 	}
 
