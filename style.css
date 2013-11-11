@@ -350,6 +350,11 @@ input[type="search"]::-webkit-search-results-button {
     border-bottom: 1px dotted #444;
 }
 
+#content ol,
+#content ul {
+    margin: 0 0 20px 30px;
+}
+
 /* ==========================================================================
    Header Styles
    ========================================================================== */
