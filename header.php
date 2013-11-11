@@ -41,5 +41,6 @@
 				<nav id="site-navigation">
 					<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'header-nav clearfix' ) ); ?>
 				</nav><!-- end #site-navigation -->
+				<a href="#" class="gb-mobile-navigation" title="Show Navigation Menu"></a>
 			</div>
 		</header><!-- end #header -->

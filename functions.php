@@ -111,9 +111,10 @@ add_action( 'wp_enqueue_scripts', 'tgm_setup_assets', 0 );
 function tgm_setup_assets() {
 
 	// Enqueue theme styles.
-	wp_enqueue_style( 'tgm-css-main', get_stylesheet_uri() );
+	wp_enqueue_style( 'pressable-main', get_stylesheet_uri() );
 
 	// Enqueue theme scripts.
+	wp_enqueue_script( 'pressable-main', get_template_directory_uri() . '/js/pressable.js', array( 'jquery' ), '1.0.0', true );
 
 }
 

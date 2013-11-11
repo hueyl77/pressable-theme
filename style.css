@@ -408,6 +408,28 @@ input[type="search"]::-webkit-search-results-button {
     background-color: #df423a;
 }
 
+.gb-mobile-navigation {
+    display: none;
+    float: right;
+    height: 25px;
+    position: relative;
+    padding-left: 1em;
+}
+
+.gb-mobile-navigation:before {
+  content: "";
+  position: absolute;
+  top: 0.75em;
+  left: 0;
+  width: 1em;
+  height: 0.125em;
+  border-top: 0.375em double #1e474c;
+  border-bottom: 0.125em solid #1e474c;
+  -webkit-transform: scale(1.5);
+  transform: scale(1.5);
+  -moz-transform: scale(1.5);
+}
+
 /* ==========================================================================
    Content Styles
    ========================================================================== */
@@ -961,9 +983,10 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 .phone-contact .phone-info {
-    float: right;
     height: 80px;
-    padding: 12px 29px;
+    padding: 12px 0;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .phone-contact .question {
@@ -971,7 +994,7 @@ input[type="search"]::-webkit-search-results-button {
     color: #244347;
     display: block;
     text-align: center;
-    margin-bottom: 5px;
+    margin: 0 auto 5px;
 }
 
 .phone-contact .number {
@@ -980,6 +1003,7 @@ input[type="search"]::-webkit-search-results-button {
     font-weight: 700;
     text-align: center;
     display: block;
+    margin: 0 auto;
 }
 
 /* ==========================================================================
@@ -1135,25 +1159,25 @@ input:-webkit-autofill { background: #fff !important; }
    Pagination
    ========================================================================== */
 
-.content .pagination {
+.entry-content .pagination {
 	list-style: none;
 	margin-bottom: 40px;
 }
 
-.content .pagination li {
+.entry-content .pagination li {
 	float: left;
 	list-style: none;
 	margin: 0 5px 0 0;
 }
 
-.content .pagination li a {
+.entry-content .pagination li a {
 	background: #f4f4f4;
 	border: 1px solid #e4e4e4;
 	padding: 3px 8px 2px;
 }
 
-.content .pagination li a:hover,
-.content .pagination li.active a {
+.entry-content .pagination li a:hover,
+.entry-content .pagination li.active a {
 	color: #b5121b;
 	background: #fff;
 	border: 1px solid #d4d4d4;
@@ -1251,4 +1275,170 @@ input:-webkit-autofill { background: #fff !important; }
 
 .no-margin {
     margin: 0 !important;
+}
+
+/* ==========================================================================
+   Responsive Styles
+   ========================================================================== */
+
+@media (max-width: 844px) {
+    .home-select-boxes .home-box {
+        max-width: 100%;
+        margin-right: 0;
+        float: none;
+    }
+}
+
+@media (max-width: 768px) {
+    #mvp-content {
+        padding: 40px 0;
+    }
+
+    .pricing-column,
+    #pricing-features .pricing-features-list li,
+    .pricing-high-touch li,
+    .pricing-faq {
+        width: 100%;
+        max-width: 100% !important;
+        float: none;
+        margin-right: 0;
+    }
+
+    .pricing-header {
+        border-radius: 0 !important;
+        -moz-border-radius: 0 !important;
+        -webkit-border-radius: 0 !important;
+    }
+
+    .pricing-row {
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+    }
+
+    #landing-veins {
+        display: none;
+    }
+
+    .landing-supports-column,
+    .landing-item,
+    #landing-contact {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+    }
+
+    .footer-widget {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 20px;
+        text-align: center;
+    }
+
+    #footer-widget-five {
+        clear: both;
+        overflow: hidden;
+        margin: 0 auto;
+        float: none;
+        width: 250px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+    #header .gb-mobile-navigation {
+        display: block;
+    }
+
+    #header {
+        -webkit-transition: height 1s ease-in-out;
+        -moz-transition: height 1s ease-in-out;
+        -ms-transition: height 1s ease-in-out;
+        -o-transition: height 1s ease-in-out;
+        transition: height 1s ease-in-out;
+    }
+
+    #header nav {
+        display: none;
+        float: none;
+        background: #1e474c;
+        margin-top: 20px;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        -ms-backface-visibility: hidden;
+        -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    #header nav.mobile-nav-open {
+        display: block;
+        z-index: 999;
+    }
+
+    #header nav .header-nav {
+        float: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #header nav .header-nav li {
+        float: none;
+        border-bottom: 1px solid #5a8d9f;
+        width: 100%;
+    }
+
+    #header nav .header-nav li a {
+        padding: 4px 10px 10px;
+        display: block;
+    }
+
+    #site-navigation li a:hover {
+        color: #fff;
+    }
+
+    #site-navigation li.login a {
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+        padding: 10px !important;
+        text-align: left;
+        margin-top: 0;
+    }
+
+    #header nav .header-nav li a:hover,
+    #header nav .header-nav li a:active,
+    #header nav .header-nav li.current-menu-item a {
+        outline: 0 none;
+    }
+
+    #mvp-content {
+        padding: 20px 0;
+    }
+
+    .pricing-high-touch li {
+        width: 100%;
+        max-width: 100%;
+        float: none;
+        margin-bottom: 20px;
+    }
+
+    #footer-copyright,
+    #footer-info {
+        float: none;
+        text-align: center;
+    }
+}
+
+/* ==========================================================================
+   Retina Styles
+   ========================================================================== */
+
+@media (min--moz-device-pixel-ratio: 1.5),
+       (-o-min-device-pixel-ratio: 3/2),
+       (-webkit-min-device-pixel-ratio: 1.5),
+       (min-device-pixel-ratio: 1.5),
+       (min-resolution: 144dpi),
+       (min-resolution: 1.5dppx)
+{
+    /* Retina styles go here */
 }
