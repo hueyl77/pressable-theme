@@ -7,9 +7,6 @@
  * @author  Thomas Griffin
  */
 jQuery(document).ready(function($){
-    // Prepare the variable that holds our custom media manager.
-    var tgm_media_frame;
-
     // Bind to our click event in order to open up the new media experience.
     $(document).on('click.tgmOpenMediaManager', '.tgm-open-media', function(e){
         // Prevent the default action from occuring.
@@ -17,12 +14,6 @@ jQuery(document).ready(function($){
 
         // Set variable to grab input field for dynamic population.
         var input_field = $(this).prev();
-
-        // If the frame already exists, re-open it.
-        if ( tgm_media_frame ) {
-            tgm_media_frame.open();
-            return;
-        }
 
         /**
          * The media frame doesn't exist let, so let's create it with some options.
@@ -144,5 +135,37 @@ jQuery(document).ready(function($){
     $(document).on('click', '.tgm-remove-media', function(e){
     	e.preventDefault();
     	$(this).prev().prev().val('');
+    });
+
+    // Initialize sortable.
+    var items = $('.tgm-repeatable-fields');
+    items.sortable({
+        containment: 'parent',
+        cursor: 'move'
+    });
+
+    // Make repeatable fields for brand images.
+    $(document).on('click', '.tgm-repeat-field', function(e){
+    	e.preventDefault();
+    	var $this     = $(this),
+    	    parent    = $this.parent(),
+    	    number    = $(parent).parent().find('.tgm-repeating-field:last').data('number'),
+    	    column    = $(parent).data('column') ? true : false,
+    	    new_field = column ? $(parent).html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"').split('_pressable_pricing[' + $(parent).data('number') + ']').join('_pressable_pricing[' + (number+1) + ']') : $(parent).html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"');
+
+        console.log(new_field);
+
+        $(new_field).find('input').val('');
+        if ( column )
+            $('<li class="tgm-repeating-field" data-number="' + (number+1) + '" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">' + new_field + '</li>').insertAfter(parent);
+        else
+            $('<li class="tgm-repeating-field" data-number="' + (number+1) + '" data-column="false" style="margin-bottom:5px;">' + new_field + '</li>').insertAfter(parent);
+    });
+
+    // Remove field when clicked.
+    $(document).on('click', '.tgm-remove-field', function(e){
+    	e.preventDefault();
+    	if ( $(this).parent().parent().find('.tgm-repeating-field').length <= 1 ) return;
+    	$(this).parent().remove();
     });
 });

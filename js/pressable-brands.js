@@ -150,7 +150,7 @@ jQuery(document).ready(function($){
     	var $this     = $(this),
     	    parent    = $this.parent(),
     	    number    = $this.parent().parent().find('.tgm-repeating-field:last').data('number'),
-    	    new_field = $(this).parent().html().replace('data-number="' + number + '"', 'data-number="' + (number+1) + '"');
+    	    new_field = $(this).parent().html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"');
 
         $(new_field).find('input').val('');
         $('<li class="tgm-repeating-field" data-number="' + (number+1) + '" style="margin-bottom:5px;">' + new_field + '</li>').insertAfter(parent);

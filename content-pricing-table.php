@@ -7,57 +7,37 @@
  * @copyright Copyright © 2013, Thomas Griffin.
  * @license	  http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
  */
+$pricing_columns = get_post_meta( get_the_ID(), 'pressable_pricing_columns', true );
+$column_number   = count( $pricing_columns );
+$n = 0;
 ?>
 <div id="pricing-table" class="clearfix">
-    <div class="pricing-table-wrap pricing-columns-3 clearfix">
-        <div class="pricing-column pricing-column-first pricing-freelancer">
-            <div class="pricing-header pricing-header-first">
-                <p class="pricing-title center">Freelancer</p>
-                <p class="pricing-price center no-margin">$25 <span class="pricing-price-sub">p/mo</span></p>
+    <div class="pricing-table-wrap pricing-columns-<?php echo $column_number; ?> clearfix">
+        <?php foreach ( (array) $pricing_columns as $i => $column ) : ?>
+            <?php
+                if ( 0 == $n )
+                    $class = 'pricing-column pricing-column-first';
+                elseif ( ($n+1) == $column_number )
+                    $class = 'pricing-column pricing-column-last';
+                else
+                    $class = 'pricing-column';
+            ?>
+            <div class="<?php echo $class; ?> pricing-<?php echo strtolower( sanitize_title_with_dashes( $column['title'] ) ); ?>">
+                <div class="pricing-header">
+                    <p class="pricing-title center"><?php echo $column['title']; ?></p>
+                    <p class="pricing-price center no-margin"><?php echo $column['price']; ?> <span class="pricing-price-sub">p/mo</span></p>
+                </div>
+                <?php foreach ( (array) $column['rows'] as $i => $row ) : ?>
+                    <?php $row_class = 0 == $i%2 ? 'pricing-row' : 'pricing-row pricing-row-alt'; ?>
+                    <div class="<?php echo $row_class; ?>">
+                        <p class="center no-margin"><?php echo $row; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            <div class="pricing-row">
-                <p class="center no-margin">5 websites*</p>
-            </div>
-            <div class="pricing-row pricing-row-alt">
-                <p class="center no-margin">15,000 pageviews <br />total p/mo</p>
-            </div>
-            <div class="pricing-row">
-                <p class="center no-margin"><a class="button" href="#" title="Sign Up">Sign Up</a></p>
-            </div>
-        </div>
-        <div class="pricing-column pricing-column pricing-agency">
-            <div class="pricing-header">
-                <p class="pricing-title center">Agency</p>
-                <p class="pricing-price center no-margin">$75 <span class="pricing-price-sub">p/mo</span></p>
-            </div>
-            <div class="pricing-row">
-                <p class="center no-margin">25 websites</p>
-            </div>
-            <div class="pricing-row pricing-row-alt">
-                <p class="center no-margin">75,000 pageviews <br />total p/mo</p>
-            </div>
-            <div class="pricing-row">
-                <p class="center no-margin"><a class="button" href="#" title="Sign Up">Sign Up</a></p>
-            </div>
-        </div>
-        <div class="pricing-column pricing-column-last pricing-freelancer">
-            <div class="pricing-header pricing-header-last">
-                <p class="pricing-title center">Small Business</p>
-                <p class="pricing-price center no-margin">$150 <span class="pricing-price-sub">p/mo</span></p>
-            </div>
-            <div class="pricing-row">
-                <p class="center no-margin">75 websites</p>
-            </div>
-            <div class="pricing-row pricing-row-alt">
-                <p class="center no-margin">150,000 pageviews <br />total p/mo</p>
-            </div>
-            <div class="pricing-row">
-                <p class="center no-margin"><a class="button" href="#" title="Sign Up">Sign Up</a></p>
-            </div>
-        </div>
+        <?php $n++; endforeach; ?>
         <div class="pricing-footer clearfix">
-            <p class="pricing-asterisk float-left no-margin">*Contact for quote statement.</p>
-            <p class="float-right no-margin"><a class="button" href="#" title="Contact Us">Contact Us</a></p>
+            <p class="pricing-asterisk float-left no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_pricing_footer', true ); ?></p>
+            <p class="float-right no-margin"><a class="button" href="<?php echo get_post_meta( get_the_ID(), 'pressable_pricing_footer_button_link', true ); ?>" title="<?php echo get_post_meta( get_the_ID(), 'pressable_pricing_footer_button', true ); ?>"><?php echo get_post_meta( get_the_ID(), 'pressable_pricing_footer_button', true ); ?></a></p>
         </div>
     </div>
 </div>
