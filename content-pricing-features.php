@@ -9,12 +9,10 @@
  */
 ?>
 <div id="pricing-features">
-    <h3 class="center">All Plans Include These Powerful Features</h3>
+    <h3 class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_pricing_feature_title', true ); ?></h3>
     <ul class="pricing-features-list clearfix">
-        <li>CDN</li>
-        <li>Server Side Optimization</li>
-        <li class="last-item">New Relic Insight</li>
-        <li>SSL</li>
-        <li>Support</li>
+        <?php $features = get_post_meta( get_the_ID(), 'pressable_pricing_features', true ); foreach ( (array) $features as $i => $feature ) : $class = 2 == $i%3 || ($i+1) == count( $features ) ? 'last-item' : ''; ?>
+        <li class="<?php echo $class; ?>"><?php echo $feature; ?></li>
+        <?php endforeach; ?>
     </ul>
 </div>

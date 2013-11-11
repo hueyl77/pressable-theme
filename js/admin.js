@@ -151,7 +151,7 @@ jQuery(document).ready(function($){
     	    parent    = $this.parent(),
     	    number    = $(parent).parent().find('.tgm-repeating-field:last').data('number'),
     	    column    = $(parent).data('column') ? true : false,
-    	    new_field = column ? $(parent).html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"').split('_pressable_pricing[' + $(parent).data('number') + ']').join('_pressable_pricing[' + (number+1) + ']') : $(parent).html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"');
+    	    new_field = column ? $(parent).html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"').split('[' + $(parent).data('number') + ']').join('[' + ($(parent).data('number')+1) + ']') : $(parent).html().split('data-number="' + number + '"').join('data-number="' + (number+1) + '"');
 
         console.log(new_field);
 

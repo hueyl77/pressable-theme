@@ -270,6 +270,76 @@ class Pressable_Admin {
     	        </tr>
     	    </tbody>
     	</table>
+
+    	<hr>
+
+    	<h4>Pricing Feature Settings</h4>
+    	<table class="form-table">
+    	    <tbody>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-pricing-feature-title">Pricing Feature Title</label></th>
+    	            <td><input id="pressable-feature-title" type="text" name="pressable[pricing_feature_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_pricing_feature_title', true ); ?>" size="70" placeholder="Enter the pricing feature title here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label>Pricing Features</label></th>
+    	            <td>
+    	                <ul class="tgm-repeatable-fields" style="margin:0;">
+    	                    <?php $pricing_features = get_post_meta( $post->ID, 'pressable_pricing_features', true ); if ( empty( $pricing_fields ) ) : ?>
+    	                    <li class="tgm-repeating-field" data-number="0" data-column="false" style="margin-bottom:5px;cursor:move;">
+			                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/sortable.gif" style="vertical-align: middle; cursor: move;" />
+			                    <input type="text" name="pressable[pricing_features][]" value="" size="35" placeholder="Enter the pricing feature here." /> <a class="tgm-repeat-field button button-primary" title="Repeat Field">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field">Remove Field</a>
+			                </li>
+			                <?php else : ?>
+                            <?php foreach ( (array) $pricing_features as $n => $feature ) : ?>
+			                <li class="tgm-repeating-field" data-number="<?php echo $n; ?>" data-column="false" style="margin-bottom:5px;cursor:move;">
+			                    <img src="<?php echo get_template_directory_uri(); ?>/admin/images/sortable.gif" style="vertical-align: middle; cursor: move;" />
+			                    <input type="text" name="pressable[pricing_features][]" value="<?php echo esc_attr( $feature ); ?>" size="35" placeholder="Enter the pricing feature here." /> <a class="tgm-repeat-field button button-primary" title="Repeat Field">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field">Remove Field</a>
+			                </li>
+			                <?php endforeach; ?>
+			                <?php endif; ?>
+			            </ul>
+    	            </td>
+    	        </tr>
+    	    </tbody>
+    	</table>
+
+    	<hr>
+
+    	<h4>Pricing FAQ Settings</h4>
+    	<table class="form-table">
+    	    <tbody>
+    	        <tr valign="middle">
+    	            <th scope="row"><label>Pricing FAQ</label></th>
+    	            <td>
+    	                <ul class="tgm-repeatable-fields" style="margin:0;">
+    	                    <?php $pricing_faq = get_post_meta( $post->ID, 'pressable_pricing_faq', true ); if ( empty( $pricing_faq ) ) : ?>
+    	                    <li class="tgm-repeating-field" data-number="0" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+					            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+					            <p>
+    			                    <label><strong>Pricing FAQ Title</strong></label> <input type="text" name="_pressable_faq[0][title]" value="" size="35" placeholder="Enter the pricing faq title here." />
+					            </p>
+					            <p>
+    			                    <label><strong>Pricing FAQ Description</strong></label> <textarea name="_pressable_faq[0][faq]" value="" rows="5" cols="34" placeholder="Enter the pricing faq title here."></textarea>
+					            </p>
+			                </li>
+			                <?php else : ?>
+                            <?php foreach ( (array) $pricing_faq as $n => $faq ) : ?>
+			                <li class="tgm-repeating-field" data-number="<?php echo $n; ?>" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+					            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+			                    <p>
+    			                    <label><strong>Pricing FAQ Title</strong></label> <input type="text" name="_pressable_faq[<?php echo $n; ?>][title]" value="<?php echo $faq['title']; ?>" size="35" placeholder="Enter the pricing faq title here." />
+					            </p>
+					            <p>
+    			                    <label><strong>Pricing FAQ Description</strong></label> <textarea name="_pressable_faq[<?php echo $n; ?>][desc]" value="" rows="5" cols="34" placeholder="Enter the pricing faq title here."><?php echo $faq['desc']; ?></textarea>
+					            </p>
+			                </li>
+			                <?php endforeach; ?>
+			                <?php endif; ?>
+			            </ul>
+    	            </td>
+    	        </tr>
+    	    </tbody>
+    	</table>
     	<?php
 
 	}
@@ -331,7 +401,7 @@ class Pressable_Admin {
     	if ( empty( $_POST['pressable'] ) ) return;
 
     	foreach ( $_POST['pressable'] as $key => $value )
-    	    update_post_meta( $post_id, 'pressable_' . strtolower( $key ), trim( $value ) );
+    	    update_post_meta( $post_id, 'pressable_' . strtolower( $key ), is_array( $value ) ? stripslashes_deep( $value ) : $value );
 
 	}
 
@@ -340,6 +410,7 @@ class Pressable_Admin {
     	if ( empty( $_POST['_pressable_pricing'] ) ) return;
 
         update_post_meta( $post_id, 'pressable_pricing_columns', $_POST['_pressable_pricing'] );
+        update_post_meta( $post_id, 'pressable_pricing_faq', $_POST['_pressable_faq'] );
 
 	}
 
