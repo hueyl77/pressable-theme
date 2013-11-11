@@ -1179,28 +1179,27 @@ input:-webkit-autofill { background: #fff !important; }
    Pagination
    ========================================================================== */
 
-.entry-content .pagination {
+#site-container .pagination {
 	list-style: none;
 	margin-bottom: 40px;
 }
 
-.entry-content .pagination li {
+#site-container .pagination li {
 	float: left;
 	list-style: none;
 	margin: 0 5px 0 0;
 }
 
-.entry-content .pagination li a {
-	background: #f4f4f4;
-	border: 1px solid #e4e4e4;
+#site-container .pagination li a {
+	background: #f5f5f5;
+	border: 1px solid #e5e5e5;
 	padding: 3px 8px 2px;
 }
 
-.entry-content .pagination li a:hover,
-.entry-content .pagination li.active a {
-	color: #b5121b;
+#site-container .pagination li a:hover,
+#site-container .pagination li.active a {
 	background: #fff;
-	border: 1px solid #d4d4d4;
+	border: 1px solid #d5d5d5;
 }
 
 .page-links {
