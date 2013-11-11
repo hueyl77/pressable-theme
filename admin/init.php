@@ -12,6 +12,9 @@
 
 class Pressable_Admin {
 
+    public $slug;
+    public $options;
+
 	public function __construct() {
 
         add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -20,14 +23,14 @@ class Pressable_Admin {
         add_action( 'add_meta_boxes', array( $this, 'pricing_box' ) );
         add_action( 'add_meta_boxes', array( $this, 'landing_box' ) );
         add_action( 'save_post', array( $this, 'save_settings' ), 10, 2 );
+        add_action( 'admin_menu', array( $this, 'menu' ) );
 
 	}
 
 	public function enqueue_scripts( $hook ) {
 
-	    if ( 'post.php' !== $hook && isset( $_GET['action'] ) && 'edit' !== $_GET['action'] ) return;
-
-    	wp_enqueue_script( 'pressable-admin', get_template_directory_uri() . '/js/admin.js', array( 'jquery' ), '1.0.0', true );
+	    if ( 'post.php' == $hook && isset( $_GET['action'] ) && 'edit' !== $_GET['action'] )
+    	    wp_enqueue_script( 'pressable-admin', get_template_directory_uri() . '/js/admin.js', array( 'jquery' ), '1.0.0', true );
 
 	}
 
@@ -259,6 +262,95 @@ class Pressable_Admin {
 
     	foreach ( $_POST['pressable'] as $key => $value )
     	    update_post_meta( $post_id, 'pressable_' . strtolower( $key ), trim( $value ) );
+
+	}
+
+	public function menu() {
+
+		if ( isset( $_GET['update_options'] ) && $_GET['update_options'] )
+			$this->update_opts();
+
+		$this->slug = add_theme_page( 'Pressable Options', 'Pressable', 'manage_options', 'pressable-options', array( $this, 'menu_cb' ) );
+
+		if ( $this->slug )
+			add_action( 'load-' . $this->slug, array( $this, 'assets' ) );
+
+	}
+
+	public function menu_cb() {
+
+		$this->options = get_option( 'pressable_options' ) ? get_option( 'pressable_options' ) : $this->default_opts();
+
+		?>
+		<div class="wrap">
+			<?php screen_icon( 'options-general' ); ?>
+			<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
+			<div class="pressable-settings">
+				<?php if ( isset( $_GET['update_options'] ) && $_GET['update_options'] ) : ?>
+					<div id="message" class="updated">
+						<p><strong>Pressable theme options updated.</strong></p>
+					</div>
+				<?php endif; ?>
+				<form method="post" action="<?php echo add_query_arg( array( 'page' => 'pressable-options', 'update_options' => true ), admin_url( 'themes.php' ) ); ?>">
+					<table class="form-table">
+						<tbody>
+							<tr valign="middle">
+								<th scope="row" style="width:100px;"><label for="pressable-brand-images-0">Brand Images</label></th>
+								<td>
+								    <ul id="tgm-repeatable-fields" style="margin:0;">
+    								    <?php if ( empty( $this->options['brands'] ) ) : ?>
+    								        <li class="tgm-repeating-field" data-number="0" style="margin-bottom:5px;">
+    								            <img src="<?php echo get_template_directory_uri(); ?>/admin/images/sortable.gif" style="vertical-align: middle; cursor: move;" />
+        								        <input data-number="0" type="text" name="_pressable[brands][]" size="60" value="" /> <a href="#" class="tgm-open-media button button-primary">Click Here to Upload Image</a> <a href="#" class="tgm-remove-media button button-secondary">Remove</a>&nbsp;&nbsp;<a class="tgm-repeat-field button button-primary" title="Repeat Field">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field">Remove Field</a>
+    								        </li>
+    								    <?php else : ?>
+    								    <?php foreach ( (array) $this->options['brands'] as $i => $url ) : ?>
+    								        <li class="tgm-repeating-field" data-number="<?php echo $i; ?>" style="margin-bottom:5px;">
+    								            <img src="<?php echo get_template_directory_uri(); ?>/admin/images/sortable.gif" style="vertical-align: middle; cursor: move;" />
+        									    <input data-number="<?php echo $i; ?>" type="text" name="_pressable[brands][]" size="60" value="<?php echo esc_url( $url ); ?>" /> <a href="#" class="tgm-open-media button button-primary">Click Here to Upload Image</a> <a href="#" class="tgm-remove-media button button-secondary">Remove</a> <a class="tgm-repeat-field button button-primary" title="Repeat Field">Repeat Field</a> <a class="tgm-remove-field button button-primary" title="Remove Field">Remove Field</a>
+    								        </li>
+    									<?php endforeach; ?>
+    									<?php endif; ?>
+								    </ul>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="submit"><input class="button button-primary button-large" type="submit" value="Save Pressable Options" /></p>
+				</form>
+			</div>
+		</div>
+		<?php
+
+	}
+
+	public function default_opts() {
+
+		return array(
+			'brands' => array()
+		);
+
+	}
+
+	public function update_opts() {
+
+		$opts = get_option( 'pressable_options' );
+
+        if ( empty( $_POST['_pressable'] ) ) return;
+
+        $opts['brands'] = array();
+
+        foreach ( $_POST['_pressable']['brands'] as $url )
+            $opts['brands'][] = esc_url( $url );
+
+		update_option( 'pressable_options', $opts );
+
+	}
+
+	public function assets() {
+
+        wp_enqueue_media();
+		wp_enqueue_script( 'pressable-brands', get_template_directory_uri() . '/js/pressable-brands.js', array( 'jquery', 'jquery-ui-sortable' ), '1.0.0', true );
 
 	}
 
