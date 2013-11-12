@@ -508,6 +508,30 @@ class Pressable_Admin {
     	        </tr>
     	    </tbody>
     	</table>
+
+    	<hr>
+
+    	<h4>Landing Feature Settings</h4>
+    	<table class="form-table">
+    	    <tbody>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-feature-left-title">Landing Feature Left Title</label></th>
+    	            <td><input id="pressable-landing-feature-left-title" type="text" name="pressable[landing_feature_left_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_feature_left_title', true ); ?>" size="70" placeholder="Enter the landing feature left title here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-feature-left-text">Landing Feature Left Supporting Text</label></th>
+    	            <td><textarea id="pressable-landing-feature-left-text" name="pressable[landing_feature_left_text]" placeholder="Enter the landing feature left text here." rows="5" cols="71"><?php echo get_post_meta( $post->ID, 'pressable_landing_feature_left_text', true ); ?></textarea></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-feature-right-title">Landing Feature Right Title</label></th>
+    	            <td><input id="pressable-landing-feature-right-title" type="text" name="pressable[landing_feature_right_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_feature_right_title', true ); ?>" size="70" placeholder="Enter the landing feature right title here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-feature-right-text">Landing Feature Right Supporting Text</label></th>
+    	            <td><textarea id="pressable-landing-feature-right-text" name="pressable[landing_feature_right_text]" placeholder="Enter the landing feature right text here." rows="5" cols="71"><?php echo get_post_meta( $post->ID, 'pressable_landing_feature_right_text', true ); ?></textarea></td>
+    	        </tr>
+    	    </tbody>
+    	</table>
     	<?php
 
 	}

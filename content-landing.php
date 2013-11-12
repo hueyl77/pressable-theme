@@ -32,8 +32,8 @@
 </div>
 <div id="landing-supports" class="clearfix">
     <div class="landing-supports-column float-left">
-        <h3>The Best Way to Spend Less Time on Hosting & More Time</h3>
-        <p class="supports">Get Back to Things That Matter (Like Creating Great Content!) While We Handle:</p>
+        <h3><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_left_title', true ); ?></h3>
+        <p class="supports"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_left_text', true ); ?></p>
         <p>
             <strong>Site Performance:</strong><br>
             HTML & object caching, premium DNS (a $200 value!), and server side optimizations help your client’s websites run 3x faster.
@@ -56,7 +56,7 @@
         <div class="landing-supports-sep"></div>
     </div>
     <div class="landing-supports-column float-right">
-        <h3>Better Support For You Means the Best Support for Your Clients</h3>
-        <p class="supports">Have the Accurate Answers You Need, When You Need Them:</p>
+        <h3><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_right_title', true ); ?></h3>
+        <p class="supports"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_right_text', true ); ?></p>
     </div>
 </div>
