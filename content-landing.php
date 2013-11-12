@@ -34,29 +34,25 @@
     <div class="landing-supports-column float-left">
         <h3><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_left_title', true ); ?></h3>
         <p class="supports"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_left_text', true ); ?></p>
-        <p>
-            <strong>Site Performance:</strong><br>
-            HTML & object caching, premium DNS (a $200 value!), and server side optimizations help your client’s websites run 3x faster.
-        </p>
-        <div class="landing-supports-sep"></div>
-        <p>
-            <strong>Updates:</strong><br>
-            Security updates & core WordPress updates are done automatically with each new release.
-        </p>
-        <div class="landing-supports-sep"></div>
-        <p>
-            <strong>Scaling:</strong><br>
-            Your WordPress websites are ready to handle up to 20x daily traffic.
-        </p>
-        <div class="landing-supports-sep"></div>
-        <p>
-            <strong>All the extras:</strong><br>
-            Daily backups, CDN, and pricing plans designed with the agency in mind. Designed to benefit agencies are based on consistent traffic, so a few spikes don’t warrant any additional costs for you or your clients.
-        </p>
-        <div class="landing-supports-sep"></div>
+        <?php $landing_left = get_post_meta( get_the_ID(), 'pressable_landing_left', true ); ?>
+        <?php foreach ( (array) $landing_left as $i => $data ) : ?>
+            <p>
+                <strong><?php echo $data['title']; ?></strong><br>
+                <?php echo $data['desc']; ?>
+            </p>
+            <div class="landing-supports-sep"></div>
+        <?php endforeach; ?>
     </div>
     <div class="landing-supports-column float-right">
         <h3><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_right_title', true ); ?></h3>
         <p class="supports"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_feature_right_text', true ); ?></p>
+        <?php $landing_right = get_post_meta( get_the_ID(), 'pressable_landing_right', true ); ?>
+        <?php foreach ( (array) $landing_right as $i => $data ) : ?>
+            <p>
+                <strong><?php echo $data['title']; ?></strong><br>
+                <?php echo $data['desc']; ?>
+            </p>
+            <div class="landing-supports-sep"></div>
+        <?php endforeach; ?>
     </div>
 </div>

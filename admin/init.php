@@ -24,6 +24,7 @@ class Pressable_Admin {
         add_action( 'add_meta_boxes', array( $this, 'landing_box' ) );
         add_action( 'save_post', array( $this, 'save_settings' ), 10, 2 );
         add_action( 'save_post', array( $this, 'save_pricing_settings' ), 10, 2 );
+        add_action( 'save_post', array( $this, 'save_landing_settings' ), 10, 2 );
         add_action( 'admin_menu', array( $this, 'menu' ) );
 
 	}
@@ -522,6 +523,36 @@ class Pressable_Admin {
     	            <th scope="row"><label for="pressable-landing-feature-left-text">Landing Feature Left Supporting Text</label></th>
     	            <td><textarea id="pressable-landing-feature-left-text" name="pressable[landing_feature_left_text]" placeholder="Enter the landing feature left text here." rows="5" cols="71"><?php echo get_post_meta( $post->ID, 'pressable_landing_feature_left_text', true ); ?></textarea></td>
     	        </tr>
+                <tr valign="middle">
+    	            <th scope="row"><label>Landing Left Features</label></th>
+    	            <td>
+    	                <ul class="tgm-repeatable-fields" style="margin:0;">
+    	                    <?php $landing_left = get_post_meta( $post->ID, 'pressable_landing_left', true ); if ( empty( $landing_left ) ) : ?>
+    	                    <li class="tgm-repeating-field" data-number="0" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+					            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+					            <p>
+    			                    <label><strong>Landing Feature Title</strong></label> <input type="text" name="_pressable_landing_left[0][title]" value="" size="35" placeholder="Enter the landing feature title here." />
+					            </p>
+					            <p>
+    			                    <label><strong>Landing Feature Description</strong></label> <textarea name="_pressable_landing_left[0][desc]" value="" rows="5" cols="34" placeholder="Enter the landing feature description here."></textarea>
+					            </p>
+			                </li>
+			                <?php else : ?>
+                            <?php foreach ( (array) $landing_left as $n => $faq ) : ?>
+			                <li class="tgm-repeating-field" data-number="<?php echo $n; ?>" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+					            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+			                    <p>
+    			                    <label><strong>Landing Feature Title</strong></label> <input type="text" name="_pressable_landing_left[<?php echo $n; ?>][title]" value="<?php echo $faq['title']; ?>" size="35" placeholder="Enter the landing feature title here." />
+					            </p>
+					            <p>
+    			                    <label><strong>Landing Feature Description</strong></label> <textarea name="_pressable_landing_left[<?php echo $n; ?>][desc]" value="" rows="5" cols="34" placeholder="Enter the landing feature description here."><?php echo $faq['desc']; ?></textarea>
+					            </p>
+			                </li>
+			                <?php endforeach; ?>
+			                <?php endif; ?>
+			            </ul>
+    	            </td>
+    	        </tr>
     	        <tr valign="middle">
     	            <th scope="row"><label for="pressable-landing-feature-right-title">Landing Feature Right Title</label></th>
     	            <td><input id="pressable-landing-feature-right-title" type="text" name="pressable[landing_feature_right_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_feature_right_title', true ); ?>" size="70" placeholder="Enter the landing feature right title here." /></td>
@@ -529,6 +560,36 @@ class Pressable_Admin {
     	        <tr valign="middle">
     	            <th scope="row"><label for="pressable-landing-feature-right-text">Landing Feature Right Supporting Text</label></th>
     	            <td><textarea id="pressable-landing-feature-right-text" name="pressable[landing_feature_right_text]" placeholder="Enter the landing feature right text here." rows="5" cols="71"><?php echo get_post_meta( $post->ID, 'pressable_landing_feature_right_text', true ); ?></textarea></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label>Landing Right Features</label></th>
+    	            <td>
+    	                <ul class="tgm-repeatable-fields" style="margin:0;">
+    	                    <?php $landing_right = get_post_meta( $post->ID, 'pressable_landing_right', true ); if ( empty( $landing_right ) ) : ?>
+    	                    <li class="tgm-repeating-field" data-number="0" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+					            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+					            <p>
+    			                    <label><strong>Landing Feature Title</strong></label> <input type="text" name="_pressable_landing_right[0][title]" value="" size="35" placeholder="Enter the landing feature title here." />
+					            </p>
+					            <p>
+    			                    <label><strong>Landing Feature Description</strong></label> <textarea name="_pressable_landing_right[0][desc]" value="" rows="5" cols="34" placeholder="Enter the landing feature description here."></textarea>
+					            </p>
+			                </li>
+			                <?php else : ?>
+                            <?php foreach ( (array) $landing_right as $n => $faq ) : ?>
+			                <li class="tgm-repeating-field" data-number="<?php echo $n; ?>" data-column="true" style="margin-bottom:10px;border: 5px dashed #e5e5e5;padding:10px;cursor:move;">
+					            <a class="tgm-repeat-field button button-primary" title="Repeat Field" style="vertical-align: middle;margin-bottom: 10px;">Repeat Field</a> <a class="tgm-remove-field button button-secondary" title="Remove Field" style="vertical-align: middle;margin-bottom: 10px;">Remove Field</a>
+			                    <p>
+    			                    <label><strong>Landing Feature Title</strong></label> <input type="text" name="_pressable_landing_right[<?php echo $n; ?>][title]" value="<?php echo $faq['title']; ?>" size="35" placeholder="Enter the landing feature title here." />
+					            </p>
+					            <p>
+    			                    <label><strong>Landing Feature Description</strong></label> <textarea name="_pressable_landing_right[<?php echo $n; ?>][desc]" value="" rows="5" cols="34" placeholder="Enter the landing feature description here."><?php echo $faq['desc']; ?></textarea>
+					            </p>
+			                </li>
+			                <?php endforeach; ?>
+			                <?php endif; ?>
+			            </ul>
+    	            </td>
     	        </tr>
     	    </tbody>
     	</table>
@@ -552,6 +613,17 @@ class Pressable_Admin {
         update_post_meta( $post_id, 'pressable_pricing_columns', $_POST['_pressable_pricing'] );
         update_post_meta( $post_id, 'pressable_pricing_faq', $_POST['_pressable_faq'] );
         update_post_meta( $post_id, 'pressable_pricing_high', $_POST['_pressable_high'] );
+
+	}
+
+	public function save_landing_settings( $post_id ) {
+
+    	if ( empty( $_POST['_pressable_landing_left'] ) ) return;
+
+        update_post_meta( $post_id, 'pressable_landing_left', $_POST['_pressable_landing_left'] );
+
+        if ( isset( $_POST['_pressable_landing_right'] ) )
+            update_post_meta( $post_id, 'pressable_landing_right', $_POST['_pressable_landing_right'] );
 
 	}
 
