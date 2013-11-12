@@ -1043,6 +1043,7 @@ input[type="search"]::-webkit-search-results-button {
 
 #content .commentlist {
     margin-left: 0;
+    list-style: none;
 }
 
 .comments-title {
