@@ -379,8 +379,12 @@ input[type="search"]::-webkit-search-results-button {
 .sidebar li,
 .sidebar li {
     border-bottom: 1px solid #e5e5e5;
-    padding: 5px 0;
-    margin: 5px 0;
+    padding: 0 0 8px;
+    margin: 8px 0;
+}
+
+.sidebar .widget {
+    margin-bottom: 40px;
 }
 
 /* ==========================================================================
