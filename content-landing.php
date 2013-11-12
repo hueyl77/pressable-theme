@@ -12,21 +12,22 @@
 <p class="supports center"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_value_supports', true ); ?></p>
 <div id="landing-veins" class="clearfix"></div>
 <div id="landing-items" class="clearfix">
-    <div class="landing-item landing-stack">
-        <div class="landing-icon"></div>
-        <p class="center no-margin">Create a new WordPress account and launch it on the Pressable platform in two simple steps or clone an existing site with a single click.</p>
+    <div class="landing-item">
+        <div class="landing-icon"><img src="<?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_one', true ); ?>" alt="" /></div>
+        <p class="center no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_one_text', true ); ?></p>
     </div>
-    <div class="landing-item landing-arrows">
-        <div class="landing-icon"></div>
-        <p class="center no-margin">Invite collaborators & start building amazing websites without sharing passwords.</p>
+    <div class="landing-item">
+        <div class="landing-icon"><img src="<?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_two', true ); ?>" alt="" /></div>
+        <p class="center no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_two_text', true ); ?></p>
     </div>
-    <div class="landing-item landing-cloud">
-        <div class="landing-icon"></div>
-        <p class="center no-margin">Building what you want on a dedicated test site and deploy when you're ready.</p>
+    <div class="landing-item">
+        <div class="landing-icon"><img src="<?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_three', true ); ?>" alt="" /></div>
+        <p class="center no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_three_text', true ); ?></p>
     </div>
-    <div class="landing-item landing-cash last-item">
+    <div class="landing-item last-item">
         <div class="landing-icon"></div>
-        <p class="center no-margin">Pass on the savings to your clients with discounted pricing plans starting at $14 per site when you host 5 or more websites.</p>
+        <div class="landing-icon"><img src="<?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_four', true ); ?>" alt="" /></div>
+        <p class="center no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_four_text', true ); ?></p>
     </div>
 </div>
 <div id="landing-supports" class="clearfix">

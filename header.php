@@ -8,6 +8,7 @@
  * @license	  http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
  */
 
+$option = get_option( 'pressable_options' );
 ?><!DOCTYPE html>
 <!--[if lt IE 7]><html class="ie lt-ie9 lt-ie8 lt-ie7" <?php language_attributes(); ?>><![endif]-->
 <!--[if IE 7]><html class="ie lt-ie9 lt-ie8" <?php language_attributes(); ?>><![endif]-->
@@ -23,7 +24,7 @@
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 	<!--[if lt IE 9]><script type="text/javascript" src="<?php echo get_template_directory_uri() . '/js/html5.js'; ?>"></script><![endif]-->
-	<script type="text/javascript" src="//use.typekit.net/esr1ast.js"></script>
+	<script type="text/javascript" src="//use.typekit.net/<?php echo ( isset( $option['typekit'] ) ? $option['typekit'] : 'esr1ast' ); ?>.js"></script>
     <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<?php wp_head(); ?>
 </head>

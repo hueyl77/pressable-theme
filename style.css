@@ -861,24 +861,13 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 .landing-icon {
-    background-image: url(images/landing-icons.png);
     margin: 20px auto;
+    text-align: center;
 }
 
-.landing-stack .landing-icon {
-    background-position: 0 -360px; width: 70px; height: 70px;
-}
-
-.landing-arrows .landing-icon {
-    background-position: 0 0; width: 69px; height: 70px;
-}
-
-.landing-cloud .landing-icon {
-    background-position: 0 -239px; width: 107px; height: 71px;
-}
-
-.landing-cash .landing-icon {
-    background-position: 0 -120px; width: 76px; height: 69px;
+.landing-icon img {
+    display: block;
+    margin: 0 auto;
 }
 
 .landing-item p {

@@ -463,6 +463,46 @@ class Pressable_Admin {
     	            <td><textarea id="pressable-landing-value-supports" name="pressable[landing_value_supports]" placeholder="Enter the landing value supporting text here." rows="5" cols="71"><?php echo get_post_meta( $post->ID, 'pressable_landing_value_supports', true ); ?></textarea></td>
     	        </tr>
     	        <tr valign="middle">
+					<th scope="row"><label for="pressable-landing-image-one">Landing Value First Icon</label></th>
+					<td>
+						<input type="text" name="pressable[landing_image_one]" id="pressable-landing-image-one" size="34" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_one', true ); ?>" placeholder="Upload the first landing icon here." />&nbsp;<a href="#" class="tgm-open-media button button-primary">Click Here to Upload Image</a>&nbsp;<a href="#" class="tgm-remove-media button button-secondary">Remove</a>
+					</td>
+				</tr>
+				<tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-image-one-text">Landing Value First Icon Text</label></th>
+    	            <td><input id="pressable-landing-image-one-text" type="text" name="pressable[landing_image_one_text]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_one_text', true ); ?>" size="70" placeholder="Upload the first landing icon text here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+					<th scope="row"><label for="pressable-landing-image-two">Landing Value Second Icon</label></th>
+					<td>
+						<input type="text" name="pressable[landing_image_two]" id="pressable-landing-image-two" size="34" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_two', true ); ?>" placeholder="Upload the second landing icon here." />&nbsp;<a href="#" class="tgm-open-media button button-primary">Click Here to Upload Image</a>&nbsp;<a href="#" class="tgm-remove-media button button-secondary">Remove</a>
+					</td>
+				</tr>
+				<tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-image-two-text">Landing Value Second Icon Text</label></th>
+    	            <td><input id="pressable-landing-image-two-text" type="text" name="pressable[landing_image_two_text]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_two_text', true ); ?>" size="70" placeholder="Upload the second landing icon text here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+					<th scope="row"><label for="pressable-landing-image-three">Landing Value Third Icon</label></th>
+					<td>
+						<input type="text" name="pressable[landing_image_three]" id="pressable-landing-image-three" size="34" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_three', true ); ?>" placeholder="Upload the third landing icon here." />&nbsp;<a href="#" class="tgm-open-media button button-primary">Click Here to Upload Image</a>&nbsp;<a href="#" class="tgm-remove-media button button-secondary">Remove</a>
+					</td>
+				</tr>
+				<tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-image-three-text">Landing Value Third Icon Text</label></th>
+    	            <td><input id="pressable-landing-image-three-text" type="text" name="pressable[landing_image_three_text]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_three_text', true ); ?>" size="70" placeholder="Upload the third landing icon text here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+					<th scope="row"><label for="pressable-landing-image-four">Landing Value Fourth Icon</label></th>
+					<td>
+						<input type="text" name="pressable[landing_image_four]" id="pressable-landing-image-four" size="34" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_four', true ); ?>" placeholder="Upload the fourth landing icon here." />&nbsp;<a href="#" class="tgm-open-media button button-primary">Click Here to Upload Image</a>&nbsp;<a href="#" class="tgm-remove-media button button-secondary">Remove</a>
+					</td>
+				</tr>
+				<tr valign="middle">
+    	            <th scope="row"><label for="pressable-landing-image-four-text">Landing Value Fourth Icon Text</label></th>
+    	            <td><input id="pressable-landing-image-four-text" type="text" name="pressable[landing_image_four_text]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_image_four_text', true ); ?>" size="70" placeholder="Upload the fourth landing icon text here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
     	            <th scope="row"><label for="pressable-landing-form">Landing Page Form ID</label></th>
     	            <td><input id="pressable-landing-form" type="text" name="pressable[landing_form]" value="<?php echo get_post_meta( $post->ID, 'pressable_landing_form', true ); ?>" size="70" placeholder="Enter the Gravity Forms ID for this landing page form." /></td>
     	        </tr>
@@ -520,6 +560,12 @@ class Pressable_Admin {
 				<form method="post" action="<?php echo add_query_arg( array( 'page' => 'pressable-options', 'update_options' => true ), admin_url( 'themes.php' ) ); ?>">
 					<table class="form-table">
 						<tbody>
+						    <tr valign="middle">
+								<th scope="row" style="width:100px;"><label for="pressable-typekit">Typekit ID</label></th>
+								<td>
+								    <input type="text" id="pressable-typekit" name="_pressable[typekit]" size="60" value="<?php echo $this->get_setting( 'typekit' ); ?>"
+								</td>
+							</tr>
 							<tr valign="middle">
 								<th scope="row" style="width:100px;"><label for="pressable-brand-images-0">Brand Images</label></th>
 								<td>
@@ -553,7 +599,8 @@ class Pressable_Admin {
 	public function default_opts() {
 
 		return array(
-			'brands' => array()
+			'brands'  => array(),
+			'typekit' => ''
 		);
 
 	}
@@ -569,7 +616,15 @@ class Pressable_Admin {
         foreach ( $_POST['_pressable']['brands'] as $url )
             $opts['brands'][] = esc_url( $url );
 
+        $opts['typekit'] = stripslashes( $_POST['_pressable']['typekit'] );
+
 		update_option( 'pressable_options', $opts );
+
+	}
+
+	public function get_setting( $setting = '' ) {
+
+    	return isset( $this->options[$setting] ) ? $this->options[$setting] : '';
 
 	}
 
