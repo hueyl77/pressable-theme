@@ -371,6 +371,18 @@ input[type="search"]::-webkit-search-results-button {
     margin-bottom: 40px;
 }
 
+.sidebar ol,
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li,
+.sidebar li {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 5px 0;
+    margin: 5px 0;
+}
+
 /* ==========================================================================
    Header Styles
    ========================================================================== */
