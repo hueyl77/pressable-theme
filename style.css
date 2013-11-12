@@ -432,11 +432,12 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 #site-navigation li.menu-item-has-children > a {
-    background: url(images/menu-arrow.png) no-repeat scroll 75% 7px;
+    background: url(images/menu-arrow.png) no-repeat scroll 60% 7px;
+    padding-right: 44px;
 }
 
 #site-navigation li.menu-item-has-children:hover > a {
-    background: url(images/menu-arrow-hover.png) no-repeat scroll 75% 7px;
+    background: url(images/menu-arrow-hover.png) no-repeat scroll 60% 7px;
     color: #244347;
 }
 
@@ -993,7 +994,7 @@ input[type="search"]::-webkit-search-results-button {
 
 .footer-widget {
     float: left;
-    width: 110px;
+    width: 150px;
     margin-right: 30px;
 }
 
