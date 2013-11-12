@@ -126,7 +126,7 @@ cite {
 }
 
 #fsb-social-bar.fsb-fixed {
-    padding: 15px 0 !important;
+    padding: 0 !important;
     border-top: 1px solid #e5e5e5 !important;
     border-bottom: 1px solid #e5e5e5 !important;
 }
