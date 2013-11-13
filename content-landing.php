@@ -25,7 +25,6 @@
         <p class="center no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_three_text', true ); ?></p>
     </div>
     <div class="landing-item last-item">
-        <div class="landing-icon"></div>
         <div class="landing-icon"><img src="<?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_four', true ); ?>" alt="" /></div>
         <p class="center no-margin"><?php echo get_post_meta( get_the_ID(), 'pressable_landing_image_four_text', true ); ?></p>
     </div>

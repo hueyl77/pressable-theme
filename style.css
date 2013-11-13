@@ -1009,11 +1009,13 @@ input[type="search"]::-webkit-search-results-button {
 .landing-icon {
     margin: 20px auto;
     text-align: center;
+    min-height: 120px;
+    vertical-align: middle;
 }
 
 .landing-icon img {
-    display: block;
-    margin: 0 auto;
+    display: inline;
+    vertical-align: middle;
 }
 
 .landing-item p {
