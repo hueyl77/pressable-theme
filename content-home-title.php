@@ -13,7 +13,7 @@
         <div id="mvp-content">
             <h1 class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_home_title', true ); ?></h1>
             <p class="supports center"><?php echo get_post_meta( get_the_ID(), 'pressable_home_supports', true ); ?></p>
-            <p class="center no-margin"><a class="button button-large" href="#" title="<?php echo get_post_meta( get_the_ID(), 'pressable_home_button', true ); ?>"><?php echo get_post_meta( get_the_ID(), 'pressable_home_button', true ); ?></a></p>
+            <p class="center no-margin"><a class="button button-large" href="/pricing/" title="<?php echo get_post_meta( get_the_ID(), 'pressable_home_button', true ); ?>"><?php echo get_post_meta( get_the_ID(), 'pressable_home_button', true ); ?></a></p>
             <p class="commitment center"><?php echo get_post_meta( get_the_ID(), 'pressable_home_sub', true ); ?></p>
         </div>
     </div>
