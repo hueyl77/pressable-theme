@@ -7,6 +7,7 @@
  * @copyright Copyright © 2013, Thomas Griffin.
  * @license	  http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
  */
+global $wp_query;
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope="itemscope" itemtype="http://schema.org/BlogPosting" itemprop="blogPost">
 	<div class="entry-header">
@@ -24,7 +25,11 @@
 	</div><!-- .entry-header -->
 
 	<div class="entry-summary" itemprop="text">
+	    <?php if ( $wp_query->current_post == 0 && ! is_paged() ) : ?>
+		<?php the_content(); ?>
+		<?php else : ?>
 		<?php the_excerpt(); ?>
+		<?php endif; ?>
 		<a href="<?php the_permalink(); ?>" class="btn more-link"><?php _e( 'Continue Reading', 'tgm' ); ?> <span class="meta-nav">&rarr;</span></a>
 	</div><!-- .entry-summary -->
 
