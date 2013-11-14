@@ -13,21 +13,21 @@
     <p class="supports center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_supports', true ); ?></p>
     <div class="home-select-boxes clearfix">
         <div class="home-box">
-            <a class="home-box-click" href="#" title="Agencies/Developers">
+            <a class="home-box-click" href="/agencies-developers/" title="Agencies/Developers">
                 <div class="box-icon box-agency"></div>
                 <h5 class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_agency_title', true ); ?></h5>
                 <p class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_agency_supports', true ); ?></p>
             </a>
         </div>
         <div class="home-box">
-            <a class="home-box-click" href="#" title="Marketers">
+            <a class="home-box-click" href="/marketers/" title="Marketers">
                 <div class="box-icon box-marketer"></div>
                 <h5 class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_marketer_title', true ); ?></h5>
                 <p class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_marketer_supports', true ); ?></p>
             </a>
         </div>
         <div class="home-box last-item">
-            <a class="home-box-click" href="#" title="Enterprise">
+            <a class="home-box-click" href="/enterprise/" title="Enterprise">
                 <div class="box-icon box-enterprise"></div>
                 <h5 class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_enterprise_title', true ); ?></h5>
                 <p class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_plan_enterprise_supports', true ); ?></p>
