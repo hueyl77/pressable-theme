@@ -12,8 +12,8 @@ $brands = get_option( 'pressable_options' );
 <div id="brands" class="container">
     <div class="brands-content-wrap row">
         <div class="inner-wrap clearfix">
-            <h3>Trusted By These Brands</h3>
-            <?php //<p>Optional supporting statement why these brands trust you.</p> ?>
+            <h3><?php echo ( isset( $brands['brand_title'] ) ? $brands['brand_title'] : '' ); ?></h3>
+            <p><?php echo ( isset( $brands['brand_supports'] ) ? $brands['brand_supports'] : '' ); ?></p>
             <div class="brands-images">
                 <?php foreach( (array) $brands['brands'] as $i => $url ) : ?>
                     <?php $class = ($i+1) == count( $brands['brands'] ) ? 'brand-image last-item' : 'brand-image'; ?>

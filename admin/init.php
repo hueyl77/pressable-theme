@@ -659,7 +659,19 @@ class Pressable_Admin {
 						    <tr valign="middle">
 								<th scope="row" style="width:100px;"><label for="pressable-typekit">Typekit ID</label></th>
 								<td>
-								    <input type="text" id="pressable-typekit" name="_pressable[typekit]" size="60" value="<?php echo $this->get_setting( 'typekit' ); ?>"
+								    <input type="text" id="pressable-typekit" name="_pressable[typekit]" size="60" value="<?php echo $this->get_setting( 'typekit' ); ?>" />
+								</td>
+							</tr>
+							<tr valign="middle">
+								<th scope="row" style="width:100px;"><label for="pressable-brand-title">Brands Area Title</label></th>
+								<td>
+								    <input type="text" id="pressable-brand-title" name="_pressable[brand_title]" size="60" value="<?php echo $this->get_setting( 'brand_title' ); ?>" />
+								</td>
+							</tr>
+							<tr valign="middle">
+								<th scope="row" style="width:100px;"><label for="pressable-brand-supports">Brands Supporting Text</label></th>
+								<td>
+								    <input type="text" id="pressable-brand-supports" name="_pressable[brand_supports]" size="60" value="<?php echo $this->get_setting( 'brand_supports' ); ?>" />
 								</td>
 							</tr>
 							<tr valign="middle">
@@ -695,8 +707,10 @@ class Pressable_Admin {
 	public function default_opts() {
 
 		return array(
-			'brands'  => array(),
-			'typekit' => ''
+			'brands'         => array(),
+			'typekit'        => '',
+			'brand_title'    => '',
+			'brand_supports' => ''
 		);
 
 	}
@@ -713,6 +727,8 @@ class Pressable_Admin {
             $opts['brands'][] = esc_url( $url );
 
         $opts['typekit'] = stripslashes( $_POST['_pressable']['typekit'] );
+        $opts['brand_title'] = stripslashes( $_POST['_pressable']['brand_title'] );
+        $opts['brand_supports'] = stripslashes( $_POST['_pressable']['brand_supports'] );
 
 		update_option( 'pressable_options', $opts );
 
