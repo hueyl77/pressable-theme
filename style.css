@@ -1401,6 +1401,24 @@ input:-webkit-autofill { background: #fff !important; }
     background: url(images/form-icons.png) no-repeat scroll 78% -109px;
 }
 
+
+/* ==========================================================================
+   Search Widget
+   ========================================================================== */
+
+.searchform {
+  font-size: 15px;
+  color: #808080;
+  padding: 10px 12px !important; /*over ride inline*/
+  border: 5px solid #e5e5e5;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  margin-bottom: 10px;
+  line-height: normal;
+}
+
+
 /* ==========================================================================
    Headlines
    ========================================================================== */
