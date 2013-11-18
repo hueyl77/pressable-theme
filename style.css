@@ -1406,7 +1406,7 @@ input:-webkit-autofill { background: #fff !important; }
    Search Widget
    ========================================================================== */
 
-.searchform {
+.searchform label {
   font-size: 15px;
   color: #808080;
   padding: 10px 12px !important; /*over ride inline*/
