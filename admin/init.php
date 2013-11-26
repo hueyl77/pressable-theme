@@ -120,6 +120,10 @@ class Pressable_Admin {
     	            <td><input id="pressable-home-button" type="text" name="pressable[home_button]" value="<?php echo get_post_meta( $post->ID, 'pressable_home_button', true ); ?>" size="70" placeholder="Enter the home main value button text here." /></td>
     	        </tr>
     	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-home-button-link">Home Value Button Link</label></th>
+    	            <td><input id="pressable-home-button-link" type="text" name="pressable[home_button_link]" value="<?php echo get_post_meta( $post->ID, 'pressable_home_button_link', true ); ?>" size="70" placeholder="Enter the home main value button link here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
     	            <th scope="row"><label for="pressable-home-sub">Home Value Sub Button Text</label></th>
     	            <td><input id="pressable-home-sub" type="text" name="pressable[home_sub]" value="<?php echo get_post_meta( $post->ID, 'pressable_home_sub', true ); ?>" size="70" placeholder="Enter the home main value sub button text here." /></td>
     	        </tr>
@@ -153,6 +157,10 @@ class Pressable_Admin {
     	            <th scope="row"><label for="pressable-plan-agency-supports">Agency Box Supporting Text</label></th>
     	            <td><input id="pressable-plan-agency-supports" type="text" name="pressable[plan_agency_supports]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_agency_supports', true ); ?>" size="70" placeholder="Enter the agency supporting text here." /></td>
     	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-plan-agency-link">Agency Box Link</label></th>
+    	            <td><input id="pressable-plan-agency-link" type="text" name="pressable[plan_agency_link]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_agency_link', true ); ?>" size="70" placeholder="Enter the agency box link here." /></td>
+    	        </tr>
 				<tr valign="middle">
     	            <th scope="row"><label for="pressable-plan-marketer-title">Marketer Box Title</label></th>
     	            <td><input id="pressable-plan-marketer-title" type="text" name="pressable[plan_marketer_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_marketer_title', true ); ?>" size="70" placeholder="Enter the marketer plan title here." /></td>
@@ -161,6 +169,10 @@ class Pressable_Admin {
     	            <th scope="row"><label for="pressable-plan-marketer-supports">Marketer Box Supporting Text</label></th>
     	            <td><input id="pressable-plan-marketer-supports" type="text" name="pressable[plan_marketer_supports]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_marketer_supports', true ); ?>" size="70" placeholder="Enter the marketer supporting text here." /></td>
     	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-plan-marketer-link">Marketer Box Link</label></th>
+    	            <td><input id="pressable-plan-marketer-link" type="text" name="pressable[plan_marketer_link]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_marketer_link', true ); ?>" size="70" placeholder="Enter the marketer box link here." /></td>
+    	        </tr>
 				<tr valign="middle">
     	            <th scope="row"><label for="pressable-plan-enterprise-title">Enterprise Box Title</label></th>
     	            <td><input id="pressable-plan-enterprise-title" type="text" name="pressable[plan_enterprise_title]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_enterprise_title', true ); ?>" size="70" placeholder="Enter the enterprise plan title here." /></td>
@@ -168,6 +180,10 @@ class Pressable_Admin {
     	        <tr valign="middle">
     	            <th scope="row"><label for="pressable-plan-enterprise-supports">Enterprise Box Supporting Text</label></th>
     	            <td><input id="pressable-plan-enterprise-supports" type="text" name="pressable[plan_enterprise_supports]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_enterprise_supports', true ); ?>" size="70" placeholder="Enter the enterprise supporting text here." /></td>
+    	        </tr>
+    	        <tr valign="middle">
+    	            <th scope="row"><label for="pressable-plan-enterprise-link">Enterprise Box Link</label></th>
+    	            <td><input id="pressable-plan-enterprise-link" type="text" name="pressable[plan_enterprise_link]" value="<?php echo get_post_meta( $post->ID, 'pressable_plan_enterprise_link', true ); ?>" size="70" placeholder="Enter the enterprise box link here." /></td>
     	        </tr>
 				<tr valign="middle">
     	            <th scope="row"><label for="pressable-plan-button">Plan Button Text</label></th>
