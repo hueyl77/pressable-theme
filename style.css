@@ -623,7 +623,7 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 #mvp {
-    background: url(images/cta-image.jpg) no-repeat scroll 50% 50%;
+    background: no-repeat scroll 50% 50%;
     height: 410px;
 }
 
