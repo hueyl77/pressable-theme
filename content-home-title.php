@@ -8,7 +8,7 @@
  * @license	  http://opensource.org/licenses/gpl-2.0.php GPL v2 or later
  */
 ?>
-<div id="mvp" class="container" style="background-image: url(<?php echo get_post_meta( get_the_ID(), 'pressable_home_image', true ); ?>);">
+<div id="mvp" class="container" <?php if( !empty( get_post_meta( get_the_ID(), 'pressable_home_image', true) ) ) { ?> style="background-image: url(<?php echo get_post_meta( get_the_ID(), 'pressable_home_image', true ); ?>);" <?php } ?>>
     <div class="mvp-content-wrap row">
         <div id="mvp-content">
             <h1 class="center"><?php echo get_post_meta( get_the_ID(), 'pressable_home_title', true ); ?></h1>
