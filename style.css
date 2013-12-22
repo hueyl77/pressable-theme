@@ -623,7 +623,7 @@ input[type="search"]::-webkit-search-results-button {
 }
 
 #mvp {
-    background: no-repeat scroll 50% 50%;
+    background: url(images/default-hero-cta.png) no-repeat scroll 50% 50%;
     height: 410px;
 }
 
